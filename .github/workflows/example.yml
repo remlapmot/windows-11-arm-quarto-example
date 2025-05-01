@@ -7,7 +7,7 @@ on:
 
 name: win-11-arm-quarto-test
 
-permissions: read-all
+permissions: write-all
 
 jobs:
   R-CMD-check:
