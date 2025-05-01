@@ -31,3 +31,7 @@ A simple plot.
 ```{r}
 plot(1:10)
 ```
+
+```{r}
+R.version
+```

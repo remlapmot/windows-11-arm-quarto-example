@@ -44,10 +44,15 @@ jobs:
           choco install quarto
 
           # Install TinyTeX
+          $rscript = "Rscript"
           # $args = "-e", "install.packages(c('tinytex'), repos = 'https://cloud.r-project.org/'); tinytex::install_tinytex(); tinytex::tlmgr_install(c('makeindex', 'upquote', 'inconsolata'))"
           # & $rscript $args
 
           # Add TinyTeX binaries to PATH
           # $ENV:PATH = "C:\Users\runneradmin\AppData\Roaming\TinyTeX\bin\windows;$ENV:PATH"
+          
+          # Install knitr and rmarkdown
+          $args = "-e", "install.packages(c('knitr', 'rmarkdown'), repos = 'https://cloud.r-project.org/');
+          & $rscript $args
           
           quarto render index.qmd
