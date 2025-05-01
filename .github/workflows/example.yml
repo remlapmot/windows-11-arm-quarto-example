@@ -57,3 +57,11 @@ jobs:
           
           quarto render index.qmd
           quarto --version
+
+      - name: Commit and push
+        run: |
+          git config user.name "Tom Palmer"
+          git config user.email "remlapmot@hotmail.com"
+          git add index.html
+          git commit -m "Update index.html"
+          git push
