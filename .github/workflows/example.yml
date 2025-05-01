@@ -56,3 +56,4 @@ jobs:
           & $rscript $args
           
           quarto render index.qmd
+          quarto --version
