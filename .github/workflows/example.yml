@@ -52,7 +52,7 @@ jobs:
           # $ENV:PATH = "C:\Users\runneradmin\AppData\Roaming\TinyTeX\bin\windows;$ENV:PATH"
           
           # Install knitr and rmarkdown
-          $args = "-e", "install.packages(c('knitr', 'rmarkdown'), repos = 'https://cloud.r-project.org/');
+          $args = "-e", "install.packages(c('knitr', 'rmarkdown'), repos = 'https://cloud.r-project.org/');"
           & $rscript $args
           
           quarto render index.qmd
