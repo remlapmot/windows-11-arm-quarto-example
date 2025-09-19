@@ -24,12 +24,12 @@ jobs:
       - name: Render Quarto doc using pre-installed x86_64 R 4.4.2
         run: |
           # Install x86_64 RTools44
-          $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-6459-6401.exe"
-          Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
-          Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          # $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-6459-6401.exe"
+          # Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
+          # Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
           
           # Add Rtool44 binaries to PATH
-          $ENV:PATH = "C:\rtools44\usr\bin;$ENV:PATH"
+          # $ENV:PATH = "C:\rtools44\usr\bin;$ENV:PATH"
           
           # Install pandoc
           # choco install pandoc
