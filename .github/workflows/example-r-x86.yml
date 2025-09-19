@@ -1,0 +1,66 @@
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+name: win-11-arm-quarto-test-r-x86
+
+permissions: write-all
+
+jobs:
+  R-CMD-check:
+    runs-on: windows-11-arm
+
+    name: windows-11-arm
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v5
+      
+      - name: Install aarch64 R and RTools for Windows
+        run: |
+          # Install R x86_64 4.5.1
+          $url = "https://cran.r-project.org/bin/windows/base/R-4.5.1-win.exe"
+          Invoke-WebRequest -Uri "$url" -OutFile R-x86_64.exe -UseBasicParsing -UserAgent "NativeHost"
+          Start-Process -FilePath R-x86_64.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+
+          # Install Rtools45 x86_64
+          $url = "https://cran.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-6608-6492.exe"
+          Invoke-WebRequest -Uri "$url" -OutFile rtools45-x86_64.exe -UseBasicParsing -UserAgent "NativeHost"
+          Start-Process -FilePath rtools45-x86_64.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          
+          # Add R and Rtool45 binaries to PATH
+          $ENV:PATH = "C:\Program Files\R\R-4.5.1\bin;C:\rtools45\usr\bin;$ENV:PATH"
+          
+          # Install pandoc
+          # choco install pandoc
+
+          # Install Quarto
+          choco install quarto
+
+          # Install TinyTeX
+          $rscript = "Rscript"
+          # $args = "-e", "install.packages(c('tinytex'), repos = 'https://cloud.r-project.org/'); tinytex::install_tinytex(); tinytex::tlmgr_install(c('makeindex', 'upquote', 'inconsolata'))"
+          # & $rscript $args
+
+          # Add TinyTeX binaries to PATH
+          # $ENV:PATH = "C:\Users\runneradmin\AppData\Roaming\TinyTeX\bin\windows;$ENV:PATH"
+          
+          # Install knitr and rmarkdown
+          $args = "-e", "install.packages(c('knitr', 'rmarkdown'), repos = 'https://cloud.r-project.org/');"
+          & $rscript $args
+          
+          quarto render index.qmd --output index-r-x86.html
+          quarto --version
+
+      - name: Commit and push
+        run: |
+          git config user.name "Tom Palmer"
+          git config user.email "remlapmot@hotmail.com"
+          git add index.html
+          git commit -m "Update index.html"
+          git push
