@@ -25,8 +25,8 @@ jobs:
         run: |
           # Install R 4.5.1
           $url = "https://cran.r-project.org/bin/windows/base/R-4.5.1-win.exe"
-          Invoke-WebRequest -Uri "$url" -OutFile R.exe -UseBasicParsing -UserAgent "NativeHost"
-          Start-Process -FilePath R.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          Invoke-WebRequest -Uri "$url" -OutFile R-x86_64.exe -UseBasicParsing -UserAgent "NativeHost"
+          Start-Process -FilePath R-x86_64.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
 
           # Install Rtools45
           $url = "https://cran.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-6608-6492.exe"
