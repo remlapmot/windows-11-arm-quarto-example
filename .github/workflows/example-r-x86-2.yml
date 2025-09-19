@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       
-      - name: Render Quarto doc using pre-installed x86_64 R 4.4.2
+      - name: Render Quarto doc using x86_64 R 4.5.1
         run: |
           # Install R 4.5.1
           $url = "https://cran.r-project.org/bin/windows/base/R-4.5.1-win.exe"
