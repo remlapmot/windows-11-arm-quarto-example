@@ -1,0 +1,51 @@
+on:
+  # push:
+  #   branches: [main, master]
+  # pull_request:
+  #   branches: [main, master]
+  workflow_dispatch:
+
+name: win-11-arm-quarto-test-python-x86-2
+
+permissions: write-all
+
+jobs:
+  R-CMD-check:
+    runs-on: windows-11-arm
+
+    name: windows-11-arm
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v5
+      
+      - name: Use the Python pre-installed on the runner, create a venv, and render
+        run: |
+          # Install pandoc
+          # choco install pandoc
+          echo "Here 1"
+
+          # Install Quarto
+          choco install quarto
+          echo "Here 2"
+
+          # Render the Quarto document
+          py -m venv .venv
+          echo "Here 3"
+          .venv/Scripts/activate
+          echo "Here 4"
+          py -m pip install jupyter
+          echo "Here 5"
+          quarto render index-py.qmd --output index-py-2.html
+          quarto --version
+        shell: bash
+
+      - name: Commit and push
+        run: |
+          git config user.name "Tom Palmer"
+          git config user.email "remlapmot@hotmail.com"
+          git add index-py-2.html
+          git commit -m "Update index-py-2.html"
+          git push
