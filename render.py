@@ -3,6 +3,7 @@
 # requires-python = ">=3.13"
 # dependencies = [
 #     "jupyterlab>=4.4.3",
+#     "matplotlib",
 # ]
 # ///
 import subprocess
