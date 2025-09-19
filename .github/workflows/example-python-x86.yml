@@ -1,0 +1,46 @@
+on:
+  # push:
+  #   branches: [main, master]
+  # pull_request:
+  #   branches: [main, master]
+  workflow_dispatch:
+
+name: win-11-arm-quarto-test-python-x86
+
+permissions: write-all
+
+jobs:
+  R-CMD-check:
+    runs-on: windows-11-arm
+
+    name: windows-11-arm
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v5
+      
+      - name: Install uv and quarto and setup a venv and render
+        run: |
+          # Install uv
+          choco install uv
+          
+          # Install pandoc
+          # choco install pandoc
+
+          # Install Quarto
+          choco install quarto
+
+          # run the self-contained Python script for rendering the Quarto document
+          ./render.py
+          quarto --version
+        shell: bash
+
+      - name: Commit and push
+        run: |
+          git config user.name "Tom Palmer"
+          git config user.email "remlapmot@hotmail.com"
+          git add index-py.html
+          git commit -m "Update index-py.html"
+          git push
