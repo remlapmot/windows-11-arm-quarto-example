@@ -49,8 +49,9 @@ jobs:
           $args = "-e", "install.packages(c('knitr', 'rmarkdown'), repos = 'https://cloud.r-project.org/');"
           & $rscript $args
           
-          quarto render index.qmd --output index-r-x86.html
           quarto --version
+          quarto check
+          quarto render index.qmd --output index-r-x86.html
 
       - name: Commit and push
         run: |
