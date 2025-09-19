@@ -1,0 +1,51 @@
+---
+title: "Test Quarto document"
+format:
+  html:
+    embed-resources: true
+jupyter: python3
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{python}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{python}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+A simple plot.
+
+```{python}
+#| fig-align: "center"
+#| fig-alt: "Plot of x cubed versus x."
+import matplotlib.pyplot as plt
+import numpy as np
+
+xpoints = np.arange(-10, 10, 0.1)
+ypoints = np.power(xpoints, 3)
+
+plt.plot(xpoints, ypoints)
+plt.show()
+```
+
+```{python}
+import platform
+
+print(platform.machine())
+print(platform.python_version())
+print(platform.architecture())
+```
