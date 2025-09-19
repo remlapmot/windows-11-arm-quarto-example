@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       
-      - name: Install aarch64 R and RTools for Windows
+      - name: Install x86_64 R and RTools for Windows
         run: |
           # Install R x86_64 4.5.1
           $url = "https://cran.r-project.org/bin/windows/base/R-4.5.1-win.exe"
