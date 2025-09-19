@@ -48,4 +48,5 @@ import platform
 print(platform.machine())
 print(platform.python_version())
 print(platform.architecture())
+print("Machine is", platform.uname().system, platform.uname().release, platform.uname().machine)
 ```
