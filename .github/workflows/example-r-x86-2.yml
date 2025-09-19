@@ -34,7 +34,8 @@ jobs:
           Start-Process -FilePath rtools45.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
           
           # Add R and Rtool45 binaries to PATH
-          $ENV:PATH = "C:\Program Files (x86)\R\R-4.5.1\bin\x64;C:\rtools45\usr\bin;$ENV:PATH"
+          Get-ChildItem -Path "C:\Program Files\R\R-4.5.1\bin\x64"
+          $ENV:PATH = "C:\Program Files\R\R-4.5.1\bin\x64;C:\rtools45\usr\bin;$ENV:PATH"
           
           # Install pandoc
           # choco install pandoc
