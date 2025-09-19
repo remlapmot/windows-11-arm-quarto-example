@@ -36,7 +36,7 @@ jobs:
           echo "Here 3"
           .venv/Scripts/activate
           echo "Here 4"
-          py -m pip install jupyter
+          py -m pip install jupyterlab matplotlib
           echo "Here 5"
           quarto render index-py.qmd --output index-py-2.html
           quarto --version
