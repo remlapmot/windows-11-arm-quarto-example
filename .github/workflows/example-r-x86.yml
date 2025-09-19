@@ -21,21 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       
-      - name: Install x86_64 R and RTools for Windows
+      - name: Render Quarto doc using pre-installed x86_64 R 4.4.2
         run: |
-          # Install R x86_64 4.5.1
-          $url = "https://cran.r-project.org/bin/windows/base/R-4.5.1-win.exe"
-          Invoke-WebRequest -Uri "$url" -OutFile R-x86_64.exe -UseBasicParsing -UserAgent "NativeHost"
-          Start-Process -FilePath R-x86_64.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
-
-          # Install Rtools45 x86_64
-          $url = "https://cran.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-6608-6492.exe"
-          Invoke-WebRequest -Uri "$url" -OutFile rtools45-x86_64.exe -UseBasicParsing -UserAgent "NativeHost"
-          Start-Process -FilePath rtools45-x86_64.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
-          
-          # Add R and Rtool45 binaries to PATH
-          $ENV:PATH = "C:\Program Files\R\R-4.5.1\bin;C:\rtools45\usr\bin;$ENV:PATH"
-          
           # Install pandoc
           # choco install pandoc
 
