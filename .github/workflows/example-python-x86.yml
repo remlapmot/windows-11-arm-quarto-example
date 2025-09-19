@@ -33,7 +33,9 @@ jobs:
           choco install quarto
 
           # run the self-contained Python script for rendering the Quarto document
+          echo "Upto ./render.py"
           ./render.py
+          echo "Finished render"
           quarto --version
         shell: bash
 
