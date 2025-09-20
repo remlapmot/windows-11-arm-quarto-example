@@ -20,12 +20,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
-      
-      - name: Install uv and quarto and setup a venv and render
+
+      - name: Install uv
         run: |
-          # Install uv
-          choco install uv
-          
+          powershell -ExecutionPolicy Bypass -c "irm https://github.com/astral-sh/uv/releases/download/0.8.19/uv-installer.ps1 | iex"      
+          uv --version
+      
+      - name: Install quarto and setup a venv and render
+        run: |
           # Install pandoc
           # choco install pandoc
 
