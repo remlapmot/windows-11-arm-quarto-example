@@ -23,23 +23,27 @@ jobs:
       
       - name: Render Quarto doc using x86_64 R 4.5.1
         run: |
+          "Here 1"
           # Install R 4.5.1
           $url = "https://cran.r-project.org/bin/windows/base/R-4.5.1-win.exe"
           Invoke-WebRequest -Uri "$url" -OutFile R-x86_64.exe -UseBasicParsing -UserAgent "NativeHost"
           Start-Process -FilePath R-x86_64.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
 
+          "Here 2"
           # Install Rtools45
           $url = "https://cran.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-6608-6492.exe"
           Invoke-WebRequest -Uri "$url" -OutFile rtools45.exe -UseBasicParsing -UserAgent "NativeHost"
           Start-Process -FilePath rtools45.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
           
+          "Here 3"
           # Add R and Rtool45 binaries to PATH
           Get-ChildItem -Path "C:\Program Files\R\R-4.5.1\bin\x64"
           $ENV:PATH = "C:\Program Files\R\R-4.5.1\bin\x64;C:\rtools45\usr\bin;$ENV:PATH"
           
           # Install pandoc
           # choco install pandoc
-
+          
+          "Here 4"
           # Install Quarto
           choco install quarto
 
@@ -51,6 +55,7 @@ jobs:
           # Add TinyTeX binaries to PATH
           # $ENV:PATH = "C:\Users\runneradmin\AppData\Roaming\TinyTeX\bin\windows;$ENV:PATH"
           
+          "Here 5"
           # Install knitr and rmarkdown
           $args = "-e", "install.packages(c('knitr', 'rmarkdown'), repos = 'https://cloud.r-project.org/');"
           & $rscript $args
