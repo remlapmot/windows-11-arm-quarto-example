@@ -37,9 +37,9 @@ jobs:
           
           "Here 3"
           # Add R and Rtool45 binaries to PATH
-          Get-ChildItem -Path "C:\Program Files\R\R-4.5.1\bin\x64"
+          Get-ChildItem -Path "C:\Program Files (x86)\R\R-4.5.1\bin\x64"
           # $ENV:PATH = "C:\Program Files\R\R-4.5.1\bin\x64;C:\rtools45\usr\bin;$ENV:PATH"
-          $ENV:PATH = "C:\Program Files\R\R-4.5.1\bin\x64"
+          $ENV:PATH = "C:\Program Files\R\R-4.5.1 (x86)\bin\x64"
           
           # Install pandoc
           # choco install pandoc
