@@ -26,8 +26,9 @@ jobs:
           Get-ChildItem Env:Path
           # Get-ChildItem -Path "C:\" -Name
           # Get-ChildItem -Path "C:\Program Files (x86)\" -Name
-          Get-ChildItem -Path "C:\Program Files (x86)\R\" -Name
-          Get-ChildItem -Path "C:\rtools45\" -Name
+          # Get-ChildItem -Path "C:\Program Files (x86)\R\" -Name
+          # Get-ChildItem -Path "C:\rtools45\" -Name
+          Remove-Item -Path "C:\rtools45\" -Recurse -Force
           # Install x86_64 RTools44
           # $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-6459-6401.exe"
           # Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
