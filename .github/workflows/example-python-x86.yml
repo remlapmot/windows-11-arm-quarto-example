@@ -34,10 +34,10 @@ jobs:
           uv --version
           
           # Install pandoc
-          # choco install pandoc
+          # choco install pandoc --no-progress
 
           # Install Quarto
-          choco install quarto
+          choco install quarto --no-progress
 
           # run the self-contained Python script for rendering the Quarto document
           echo "Upto ./render.py"

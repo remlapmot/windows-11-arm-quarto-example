@@ -37,10 +37,10 @@ jobs:
           $ENV:PATH = "C:\Program Files\R-aarch64\R-4.5.1\bin;C:\rtools45-aarch64\usr\bin;$ENV:PATH"
           
           # Install pandoc
-          # choco install pandoc
+          # choco install pandoc --no-progress
 
           # Install Quarto
-          choco install quarto
+          choco install quarto --no-progress
 
           # Install TinyTeX
           $rscript = "Rscript"

@@ -29,10 +29,10 @@ jobs:
           Start-Process -FilePath python-aarch64.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
 
           # Install pandoc
-          # choco install pandoc
+          # choco install pandoc --no-progress
 
           # Install Quarto
-          choco install quarto
+          choco install quarto --no-progress
 
           # Rendering the Quarto document
           python3 -m venv .venv

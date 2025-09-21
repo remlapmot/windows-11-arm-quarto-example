@@ -32,10 +32,10 @@ jobs:
           # $ENV:PATH = "C:\rtools44\usr\bin;$ENV:PATH"
           
           # Install pandoc
-          # choco install pandoc
+          # choco install pandoc --no-progress
 
           # Install Quarto
-          choco install quarto
+          choco install quarto --no-progress
 
           # Install TinyTeX
           $rscript = "Rscript"

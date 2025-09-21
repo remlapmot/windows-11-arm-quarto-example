@@ -24,11 +24,11 @@ jobs:
       - name: Use the Python pre-installed on the runner, create a venv, and render
         run: |
           # Install pandoc
-          # choco install pandoc
+          # choco install pandoc --no-progress
           echo "Here 1"
 
           # Install Quarto
-          choco install quarto
+          choco install quarto --no-progress
           echo "Here 2"
 
           # Render the Quarto document
