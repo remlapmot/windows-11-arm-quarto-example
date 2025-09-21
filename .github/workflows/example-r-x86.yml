@@ -23,6 +23,9 @@ jobs:
       
       - name: Render Quarto doc using pre-installed x86_64 R 4.4.2
         run: |
+          Get-ChildItem Env:Path
+          Get-ChildItem -Path "C:\"
+          Get-ChildItem -Path "C:\Program Files (x86)\"
           # Install x86_64 RTools44
           # $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-6459-6401.exe"
           # Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
@@ -50,7 +53,7 @@ jobs:
           & $rscript $args
           
           quarto --version
-          quarto check
+          quarto check knitr --log-level debug
           quarto render index.qmd --output index-r-x86.html
 
       - name: Commit and push
