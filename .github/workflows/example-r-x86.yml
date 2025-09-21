@@ -23,7 +23,7 @@ jobs:
       
       - name: Render Quarto doc using pre-installed x86_64 R 4.4.2
         run: |
-          Get-ChildItem Env:Path
+          $Env:Path -split ";"
           # Get-ChildItem -Path "C:\" -Name
           # Get-ChildItem -Path "C:\Program Files (x86)\" -Name
           # Get-ChildItem -Path "C:\Program Files (x86)\R\" -Name
