@@ -48,7 +48,7 @@ jobs:
           
           "Here 4"
           # Install Quarto
-          choco install quarto
+          & choco install quarto
 
           # Install TinyTeX
           $rscript = "Rscript"
