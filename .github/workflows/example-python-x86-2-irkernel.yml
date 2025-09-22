@@ -39,6 +39,9 @@ jobs:
           echo "Here 3"
           .venv/Scripts/activate
           echo "Here 4"
+          echo "$PATH"
+          export PATH="$PATH:/c:/Program Files (x86)/R/R-4.4.2/bin/x64"
+          which Rscript
           py -m pip install jupyterlab matplotlib
           echo "Here 5"
           $rscript = "Rscript"
