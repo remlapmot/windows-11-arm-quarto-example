@@ -40,8 +40,8 @@ jobs:
           .venv/Scripts/activate
           echo "Here 4"
           echo "$PATH"
-          export PATH="$PATH:/c:/Program Files (x86)/R/R-4.4.2/bin/x64"
-          export PATH="$PATH:/c:/hostedtoolcache/windows/Python/3.13.5/x64/Scripts"
+          export PATH="$PATH:/c/Program Files (x86)/R/R-4.4.2/bin/x64"
+          export PATH="$PATH:/c/hostedtoolcache/windows/Python/3.13.5/x64/Scripts"
           which jupyter
           which Rscript
           py -m pip install jupyterlab matplotlib
