@@ -24,6 +24,8 @@ jobs:
       - name: Use the Python pre-installed on the runner, create a venv, and render
         run: |
           echo "$PATH"
+          export PATH="$PATH:/c:/Program Files (x86)/R/R-4.4.2/bin/x64"
+          which Rscript
           # Install pandoc
           # choco install pandoc --no-progress
           echo "Here 1"
