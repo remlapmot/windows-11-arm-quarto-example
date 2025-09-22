@@ -50,7 +50,7 @@ jobs:
           echo "Setup IRkernel"
           R -e ".libPaths()"
           jupyter kernelspec list
-          jupyter kernelspec install "/c/Program Files (x86)/R/R-4.4.2/library/4.0/IRkernel/kernelspec" --user 
+          jupyter kernelspec install "/c/Program Files (x86)/R/R-4.4.2/library/IRkernel/kernelspec" --sys-prefix
           jupyter kernelspec list
           # "/c/Program Files (x86)/R/R-4.4.2/bin/x64/R" -e "library(IRkernel); installspec(verbose = TRUE, prefix = 'C:/Users/runneradmin/AppData/Roaming/Python')"
           echo "Start quarto render"
