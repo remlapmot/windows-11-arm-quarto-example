@@ -43,7 +43,7 @@ jobs:
           export PATH="$PATH:/c/Program Files (x86)/R/R-4.4.2/bin/x64"
           export PATH="$PATH:/c/hostedtoolcache/windows/Python/3.13.5/x64/Scripts"
           which Rscript
-          py -m pip install jupyterlab matplotlib
+          py -m pip install jupyterlab
           which jupyter
           echo "Rscript install IRkernel"
           Rscript -e "install.packages(c('IRkernel'), repos = 'https://cloud.r-project.org/', type = 'binary')"
