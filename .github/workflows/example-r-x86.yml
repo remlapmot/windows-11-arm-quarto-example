@@ -57,6 +57,7 @@ jobs:
           
           # Render the rmarkdown document
           $args = "-e", "rmarkdown::render('index-rmd.Rmd', output_file = 'index-rmd-r-x86.html')"
+          & $rscript $args
 
           git config user.name "Tom Palmer"
           git config user.email "remlapmot@hotmail.com"
