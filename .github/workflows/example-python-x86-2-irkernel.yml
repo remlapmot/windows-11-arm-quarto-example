@@ -23,6 +23,7 @@ jobs:
       
       - name: Use the Python pre-installed on the runner, create a venv, and render
         run: |
+          echo "$PATH"
           # Install pandoc
           # choco install pandoc --no-progress
           echo "Here 1"
@@ -38,7 +39,7 @@ jobs:
           echo "Here 4"
           py -m pip install jupyterlab matplotlib
           echo "Here 5"
-          $rscript = "Rscript.exe"
+          $rscript = "Rscript"
           $args = "-e", "install.packages(c('IRkernel'), repos = 'https://cloud.r-project.org/'); IRkernel::installspec()"
           & $rscript $args
           "Start quarto render"
