@@ -39,9 +39,11 @@ jobs:
           
           # Install pandoc
           choco install pandoc --no-progress
+          refreshenv
 
           # Install Quarto
           choco install quarto --no-progress
+          refreshenv
 
           # Install TinyTeX
           $rscript = "Rscript"
