@@ -40,6 +40,7 @@ jobs:
           echo "Here 5"
           $rscript = "Rscript"
           $args = "-e", "install.packages(c('IRkernel'), repos = 'https://cloud.r-project.org/'); IRkernel::installspec()"
+          & $rscript $args
           quarto render index-r-jpy.qmd
           quarto --version
         shell: bash
