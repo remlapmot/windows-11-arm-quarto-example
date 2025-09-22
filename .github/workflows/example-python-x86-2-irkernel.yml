@@ -46,7 +46,9 @@ jobs:
           py -m pip install jupyterlab matplotlib
           which jupyter
           echo "Rscript install IRkernel"
-          Rscript -e "install.packages(c('IRkernel'), repos = 'https://cloud.r-project.org/', type = 'binary'); IRkernel::installspec()"
+          Rscript -e "install.packages(c('IRkernel'), repos = 'https://cloud.r-project.org/', type = 'binary')"
+          "Setup IRkernel"
+          Rscript -e "IRkernel::installspec()"
           "Start quarto render"
           quarto render index-r-jpy.qmd
           quarto --version
