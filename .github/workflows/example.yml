@@ -54,7 +54,9 @@ jobs:
           $args = "-e", "install.packages(c('knitr', 'rmarkdown'), repos = 'https://cloud.r-project.org/');"
           & $rscript $args
          
+          "Begin quarto check knitr"
           quarto check knitr --log-level debug
+          "End quarto check knitr"
           quarto render index.qmd
           quarto --version
 
