@@ -3,7 +3,7 @@ title: "Test Quarto document"
 format:
   html:
     embed-resources: true
-jupyter: IRkernel
+jupyter: ir
 ---
 
 ## Quarto
