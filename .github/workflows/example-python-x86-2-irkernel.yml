@@ -48,7 +48,7 @@ jobs:
           echo "Rscript install IRkernel"
           Rscript -e "install.packages(c('IRkernel'), repos = 'https://cloud.r-project.org/', type = 'binary')"
           echo "Setup IRkernel"
-          R -e "library(IRkernel); installspec(verbose = TRUE)"
+          R -e "library(IRkernel); installspec(verbose = TRUE, sys_prefix = '.venv')"
           echo "Start quarto render"
           quarto render index-r-jpy.qmd
           quarto --version
