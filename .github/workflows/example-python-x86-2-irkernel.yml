@@ -38,9 +38,10 @@ jobs:
           echo "Here 4"
           py -m pip install jupyterlab matplotlib
           echo "Here 5"
-          $rscript = "Rscript"
+          $rscript = "Rscript.exe"
           $args = "-e", "install.packages(c('IRkernel'), repos = 'https://cloud.r-project.org/'); IRkernel::installspec()"
           & $rscript $args
+          "Start quarto render"
           quarto render index-r-jpy.qmd
           quarto --version
         shell: bash
