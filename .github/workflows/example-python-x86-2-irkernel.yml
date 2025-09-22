@@ -43,10 +43,8 @@ jobs:
           export PATH="$PATH:/c:/Program Files (x86)/R/R-4.4.2/bin/x64"
           which Rscript
           py -m pip install jupyterlab matplotlib
-          echo "Here 5"
-          $rscript = "Rscript"
-          $args = "-e", "install.packages(c('IRkernel'), repos = 'https://cloud.r-project.org/'); IRkernel::installspec()"
-          & $rscript $args
+          echo "Rscript install IRkernel"
+          Rscript -e "install.packages(c('IRkernel'), repos = 'https://cloud.r-project.org/'); IRkernel::installspec()"
           "Start quarto render"
           quarto render index-r-jpy.qmd
           quarto --version
