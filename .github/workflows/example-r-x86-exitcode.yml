@@ -51,7 +51,7 @@ jobs:
           # & $rscript $args
 
           $args = "-e", "1"
-          & $rscript $args
+          & $rscript $args 2>&1 | Out-String
           echo $?
           exit
 
@@ -72,15 +72,15 @@ jobs:
           git commit -m "Update index-rmd-r-x86.html"
           git push
 
-      - name: Render the Quarto document
-        run: |
-          quarto --version
-          quarto check knitr --log-level debug
-          quarto render index.qmd --output index-r-x86.html
+      # - name: Render the Quarto document
+      #   run: |
+      #     quarto --version
+      #     quarto check knitr --log-level debug
+      #     quarto render index.qmd --output index-r-x86.html
 
-          # Commit and push
-          git config user.name "Tom Palmer"
-          git config user.email "remlapmot@hotmail.com"
-          git add index-r-x86.html
-          git commit -m "Update index-r-x86.html"
-          git push
+      #     # Commit and push
+      #     git config user.name "Tom Palmer"
+      #     git config user.email "remlapmot@hotmail.com"
+      #     git add index-r-x86.html
+      #     git commit -m "Update index-r-x86.html"
+      #     git push
