@@ -17,7 +17,7 @@
 # }
 # cat("\n")
 # cat("  rmarkdown: ")
-if (requireNamespace("knitr", quietly = TRUE)) {
+if (requireNamespace("rmarkdown", quietly = TRUE)) {
   cat(paste0('\"', as.character(utils::packageVersion("knitr")), '\"'))
 } else {
   cat("null")
