@@ -1,1 +1,1 @@
-cat(as.character(utils::packageVersion("rmarkdown")))
+cat(paste0('\"', as.character(utils::packageVersion("knitr")), '\"'))
