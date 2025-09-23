@@ -62,7 +62,7 @@ jobs:
           # echo $?
           
           # Install knitr and rmarkdown
-          $args = "-e", "install.packages(c('knitr', 'rmarkdown'), repos = 'https://cloud.r-project.org/', type = 'binary');"
+          $args = "-e", "install.packages(c('knitr', 'rmarkdown', 'rstudioapi'), repos = 'https://cloud.r-project.org/', type = 'binary');"
           & $rscript $args
           echo $?
           
