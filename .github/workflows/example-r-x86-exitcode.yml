@@ -56,6 +56,11 @@ jobs:
           # Add TinyTeX binaries to PATH
           # $ENV:PATH = "C:\Users\runneradmin\AppData\Roaming\TinyTeX\bin\windows;$ENV:PATH"
           
+          # Install htmltools from source
+          $args = "-e", "install.packages(c('htmltools'), repos = 'https://cloud.r-project.org/', type = 'source');"
+          & $rscript $args
+          echo $?
+          
           # Install knitr and rmarkdown
           $args = "-e", "install.packages(c('knitr', 'rmarkdown', 'htmltools'), repos = 'https://cloud.r-project.org/', type = 'binary');"
           & $rscript $args
