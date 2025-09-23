@@ -76,8 +76,8 @@ jobs:
         run: |
           set +e
 
-          Rscript test.R
-          echo $?
+          # Rscript test.R
+          # echo $?
 
           # Rscript "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
           # echo $?
@@ -88,11 +88,11 @@ jobs:
           Rscript knitr-end-newline.R
           echo $?
 
-          Rscript test.R
-          echo $?
+          # Rscript test.R
+          # echo $?
 
-          Rscript test-2.R
-          echo $?
+          # Rscript test-2.R
+          # echo $?
 
         shell: bash
       # - name: Render the Quarto document
