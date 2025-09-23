@@ -42,8 +42,8 @@ jobs:
           # refreshenv
 
           # Install Quarto
-          choco install quarto --no-progress
-          refreshenv
+          # choco install quarto --no-progress
+          # refreshenv
 
           # Install TinyTeX
           $rscript = "Rscript"          
@@ -56,11 +56,11 @@ jobs:
           # Install knitr and rmarkdown
           $args = "-e", "install.packages(c('knitr', 'rmarkdown'), repos = 'https://cloud.r-project.org/', type = 'binary');"
           & $rscript $args
-          
-          $args = "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
-          & $rscript $args
           echo $?
-          exit
+          
+          # $args = "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
+          # & $rscript $args
+          # echo $?
 
           # Render the rmarkdown document
           # $args = "-e", "rmarkdown::render('index-rmd.Rmd', output_file = 'index-rmd-r-x86.html')"
@@ -79,11 +79,11 @@ jobs:
           Rscript test.R
           echo $?
 
-          Rscript "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
-          echo $?
+          # Rscript "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
+          # echo $?
 
-          Rscript test.R
-          echo $?
+          # Rscript test.R
+          # echo $?
           
           Rscript knitr-end-newline.R
           echo $?
