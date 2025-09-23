@@ -90,6 +90,12 @@ jobs:
 
           Rscript test.R
           echo $?
+          
+          R -e "'2.29'"
+          echo $?
+          
+          Rscript -e "'2.29'"
+          echo $?          
         shell: bash
       # - name: Render the Quarto document
       #   run: |
