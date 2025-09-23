@@ -74,8 +74,16 @@ jobs:
 
       - name: Try on Git Bash
         run: |
-          # Rscript "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
-          # echo $?
+          set +e
+
+          Rscript test.R
+          echo $?
+          
+          R test.R
+          echo $?
+
+          Rscript "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
+          echo $?
           
           Rscript knitr-end-newline.R
           echo $?
