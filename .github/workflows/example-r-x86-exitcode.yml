@@ -30,14 +30,14 @@ jobs:
           # Get-ChildItem -Path "C:\rtools45\" -Name
           # Remove-Item -Path "C:\rtools45\" -Recurse -Force
           # Install x86_64 RTools44
-          "Start rtools44"
-          $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-6459-6401.exe"
-          Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
-          Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
-          "Finish rtools44"
+          # "Start rtools44"
+          # $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-6459-6401.exe"
+          # Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
+          # Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          # "Finish rtools44"
           
           # Add Rtool44 binaries to PATH
-          $ENV:PATH = "C:\rtools44\usr\bin;$ENV:PATH"
+          # $ENV:PATH = "C:\rtools44\usr\bin;$ENV:PATH"
           # $Env:Path -split ";"
           
           # Install pandoc
@@ -57,9 +57,9 @@ jobs:
           # $ENV:PATH = "C:\Users\runneradmin\AppData\Roaming\TinyTeX\bin\windows;$ENV:PATH"
           
           # Install htmltools from source
-          $args = "-e", "install.packages(c('htmltools'), repos = 'https://cloud.r-project.org/', type = 'source');"
-          & $rscript $args
-          echo $?
+          # $args = "-e", "install.packages(c('htmltools'), repos = 'https://cloud.r-project.org/', type = 'source');"
+          # & $rscript $args
+          # echo $?
           
           # Install knitr and rmarkdown
           $args = "-e", "install.packages(c('knitr', 'rmarkdown', 'htmltools'), repos = 'https://cloud.r-project.org/', type = 'binary');"
@@ -112,6 +112,27 @@ jobs:
           echo $?
 
           Rscript -e 'library("rmarkdown")'
+          echo $?
+
+          Rscript -e 'require("compiler")'
+          echo $?
+
+          Rscript -e 'require("fastmap")'
+          echo $?
+
+          Rscript -e 'require("cli")'
+          echo $?
+
+          Rscript -e 'require("tools")'
+          echo $?
+
+          Rscript -e 'require("rstudioapi")'
+          echo $?
+
+          Rscript -e 'require("digest")'
+          echo $?
+
+          Rscript -e 'require("rlang")'
           echo $?
 
         shell: bash
