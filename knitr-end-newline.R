@@ -5,9 +5,9 @@ cat("versionMinor:", version$minor, "\n")
 cat("versionPatch:", version$patch, "\n")
 cat("home:", R.home(), "\n")
 cat("libPaths:\n")
-for (lib in .libPaths()) {
-  cat(paste0("  - ", shQuote(lib)), "\n")
-}
+# for (lib in .libPaths()) {
+#   cat(paste0('  - ', shQuote(lib)), "\n")
+# }
 cat("packages:\n")
 cat("  knitr: ")
 if (requireNamespace("knitr", quietly = TRUE)) {
