@@ -81,8 +81,14 @@ jobs:
 
           Rscript "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
           echo $?
+
+          Rscript test.R
+          echo $?
           
           Rscript knitr-end-newline.R
+          echo $?
+
+          Rscript test.R
           echo $?
         shell: bash
       # - name: Render the Quarto document
