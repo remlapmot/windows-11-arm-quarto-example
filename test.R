@@ -1,5 +1,5 @@
 if (requireNamespace("rmarkdown", quietly = TRUE)) {
-  cat(paste0("\'", utils::packageVersion("rmarkdown"), "\'"))
+  cat(utils::packageVersion("rmarkdown"))
 } else {
   cat("null")
 }
