@@ -9,7 +9,7 @@
 #   cat(paste0('  - ', shQuote(lib)), "\n")
 # }
 # cat("packages:\n")
-# cat("  knitr: ")
+cat("  knitr: ")
 if (requireNamespace("knitr", quietly = TRUE)) {
   cat(paste0('\"', as.character(utils::packageVersion("knitr")), '\"'))
 } else {
