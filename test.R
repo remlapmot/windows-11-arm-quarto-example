@@ -1,5 +1,5 @@
 if (requireNamespace("rmarkdown", quietly = TRUE)) {
-  cat(utils::packageVersion("rmarkdown"))
+  print(as.character(utils::packageVersion("rmarkdown")))
 } else {
   cat("null")
 }
