@@ -1,1 +1,1 @@
-as.character(utils::packageVersion('knitr'))
+as.character(utils::packageVersion('rmarkdown'))
