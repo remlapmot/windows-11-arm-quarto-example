@@ -1,2 +1,5 @@
+version <- getRversion()
 cat("--- YAML_START ---\n")
-cat("--- YAML_END ---\n")
+cat("versionMajor:", version$major, "\n")
+cat("versionMinor:", version$minor, "\n")
+cat("versionPatch:", version$patch, "\n")
