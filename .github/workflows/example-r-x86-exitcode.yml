@@ -91,10 +91,10 @@ jobs:
           Rscript test.R
           echo $?
           
-          R -e "'2.29'"
+          R -e "as.character(2.29)"
           echo $?
           
-          Rscript -e "'2.29'"
+          Rscript -e "as.character(2.29)"
           echo $?          
         shell: bash
       # - name: Render the Quarto document
