@@ -30,20 +30,23 @@ jobs:
           # Get-ChildItem -Path "C:\rtools45\" -Name
           # Remove-Item -Path "C:\rtools45\" -Recurse -Force
           # Install x86_64 RTools44
-          # $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-6459-6401.exe"
-          # Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
-          # Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          "Start rtools44"
+          $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-6459-6401.exe"
+          Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
+          Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          "Finish rtools44"
           
           # Add Rtool44 binaries to PATH
-          # $ENV:PATH = "C:\rtools44\usr\bin;$ENV:PATH"
+          $ENV:PATH = "C:\rtools44\usr\bin;$ENV:PATH"
+          $Env:Path -split ";"
           
           # Install pandoc
-          # choco install pandoc --no-progress
-          # refreshenv
+          choco install pandoc --no-progress
+          refreshenv
 
           # Install Quarto
-          # choco install quarto --no-progress
-          # refreshenv
+          choco install quarto --no-progress
+          refreshenv
 
           # Install TinyTeX
           $rscript = "Rscript"          
@@ -54,13 +57,13 @@ jobs:
           # $ENV:PATH = "C:\Users\runneradmin\AppData\Roaming\TinyTeX\bin\windows;$ENV:PATH"
           
           # Install knitr and rmarkdown
-          $args = "-e", "install.packages(c('knitr', 'rmarkdown'), repos = 'https://cloud.r-project.org/', type = 'binary');"
+          $args = "-e", "install.packages(c('knitr', 'rmarkdown'), repos = 'https://cloud.r-project.org/', type = 'source');"
           & $rscript $args
           echo $?
           
-          # $args = "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
-          # & $rscript $args
-          # echo $?
+          $args = "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
+          & $rscript $args
+          echo $?
 
           # Render the rmarkdown document
           # $args = "-e", "rmarkdown::render('index-rmd.Rmd', output_file = 'index-rmd-r-x86.html')"
