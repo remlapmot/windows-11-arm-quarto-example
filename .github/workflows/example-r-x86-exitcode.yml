@@ -94,6 +94,12 @@ jobs:
           R -q -e 'requireNamespace("rmarkdown")'
           echo $?
 
+          Rscript -e 'require("rmarkdown")'
+          echo $?
+
+          Rscript -e 'library("rmarkdown")'
+          echo $?
+
         shell: bash
       # - name: Render the Quarto document
       #   run: |
