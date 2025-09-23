@@ -88,11 +88,11 @@ jobs:
           Rscript knitr-end-newline.R
           echo $?
 
-          # Rscript test.R
-          # echo $?
+          Rscript -e 'requireNamespace("rmarkdown")'
+          echo $?
 
-          # Rscript test-2.R
-          # echo $?
+          R -q -e 'requireNamespace("rmarkdown")'
+          echo $?
 
         shell: bash
       # - name: Render the Quarto document
