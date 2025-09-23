@@ -72,6 +72,14 @@ jobs:
           # git commit -m "Update index-rmd-r-x86.html"
           # git push
 
+      - name: Try on Git Bash
+        run: |
+          Rscript "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
+          echo $?
+          
+          Rscript knitr-end-newline.R
+          echo $?
+        shell: bash
       # - name: Render the Quarto document
       #   run: |
       #     quarto --version
