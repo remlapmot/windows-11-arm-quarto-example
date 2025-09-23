@@ -61,9 +61,9 @@ jobs:
           & $rscript $args
           echo $?
           
-          $args = "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
-          & $rscript $args
-          echo $?
+          # $args = "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
+          # & $rscript $args
+          # echo $?
 
           # Render the rmarkdown document
           # $args = "-e", "rmarkdown::render('index-rmd.Rmd', output_file = 'index-rmd-r-x86.html')"
