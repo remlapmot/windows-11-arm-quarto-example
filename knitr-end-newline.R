@@ -24,5 +24,3 @@ if (requireNamespace("rmarkdown", quietly = TRUE)) {
 }
 cat("\n")
 cat("--- YAML_END ---\n")
-print(1 + 1)
-cat("Added line by me\n")
