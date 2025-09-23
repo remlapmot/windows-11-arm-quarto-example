@@ -1,1 +1,1 @@
-as.character(utils::packageVersion('rmarkdown'))
+cat(as.character(utils::packageVersion("rmarkdown")))
