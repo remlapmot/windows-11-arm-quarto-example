@@ -79,7 +79,7 @@ jobs:
           Rscript test.R
           echo $?
           
-          R test.R
+          R --vanilla test.R
           echo $?
 
           Rscript "C:\ProgramData\Chocolatey\lib\quarto\tools\share\capabilities\knitr.R"
