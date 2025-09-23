@@ -91,10 +91,10 @@ jobs:
           Rscript test.R
           echo $?
           
-          R -e "as.character(utils::packageVersion('knitr'))"
+          R -e "as.character(utils::packageVersion('rmarkdown'))"
           echo $?
           
-          Rscript -e "as.character(utils::packageVersion('knitr'))"
+          Rscript -e "as.character(utils::packageVersion('rmarkdown'))"
           echo $?
         shell: bash
       # - name: Render the Quarto document
