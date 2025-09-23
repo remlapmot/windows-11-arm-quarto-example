@@ -3,7 +3,7 @@ cat("--- YAML_START ---\n")
 cat("versionMajor:", version$major, "\n")
 cat("versionMinor:", version$minor, "\n")
 cat("versionPatch:", version$patch, "\n")
-cat("home:", shQuote(R.home()), "\n")
+cat("home:", R.home(), "\n")
 cat("libPaths:\n")
 for (lib in .libPaths()) {
   cat(paste0('  - ', shQuote(lib)), "\n")
@@ -24,3 +24,5 @@ if (requireNamespace("rmarkdown", quietly = TRUE)) {
 }
 cat("\n")
 cat("--- YAML_END ---\n")
+print(1 + 1)
+cat("Added line by me\n")
