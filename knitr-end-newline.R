@@ -18,9 +18,11 @@
 # cat("\n")
 # cat("  rmarkdown: ")
 if (requireNamespace("rmarkdown", quietly = TRUE)) {
-  cat(paste0('\"', as.character(utils::packageVersion("knitr")), '\"'))
-} else {
-  cat("null")
-}
-cat("\n")
+  # cat(paste0('\"', as.character(utils::packageVersion("knitr")), '\"'))
+  1 + 1
+} 
+# else {
+#   cat("null")
+# }
+# cat("\n")
 # cat("--- YAML_END ---\n")
