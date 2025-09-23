@@ -91,13 +91,13 @@ jobs:
           Rscript test.R
           echo $?
           
-          R -e 'as.character(utils::packageVersion("rmarkdown"))'
+          R -e 'cat(as.character(utils::packageVersion("rmarkdown")))'
           echo $?
           
-          Rscript -e 'as.character(utils::packageVersion("rmarkdown"))'
+          Rscript -e 'cat(as.character(utils::packageVersion("rmarkdown")))'
           echo $?
           
-          Rscript -e "as.character(utils::packageVersion('rmarkdown'))"
+          Rscript -e "cat(as.character(utils::packageVersion('rmarkdown')))"
           echo $?
 
           Rscript test-2.R
