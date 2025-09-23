@@ -1,6 +1,5 @@
-version <- getRversion()
 if (requireNamespace("rmarkdown", quietly = TRUE)) {
-  cat(paste0('\"', as.character(utils::packageVersion("rmarkdown")), '\"'))
+  cat(paste0("\'", as.character(utils::packageVersion("rmarkdown")), "\'"))
 } else {
   cat("null")
 }
