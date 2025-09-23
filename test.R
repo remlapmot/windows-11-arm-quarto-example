@@ -1,1 +1,1 @@
-as.character(2.29)
+as.character(utils::packageVersion('knitr'))
