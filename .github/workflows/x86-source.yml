@@ -56,7 +56,7 @@ jobs:
           # $ENV:PATH = "C:\Users\runneradmin\AppData\Roaming\TinyTeX\bin\windows;$ENV:PATH"
           
           # Install packages
-          $args = "-e", "install.packages(c('htmltools', 'cli', 'rlang'), repos = 'https://cloud.r-project.org/', type = 'source');"
+          $args = "-e", "install.packages(c('htmltools', 'rlang', 'rmarkdown'), repos = 'https://cloud.r-project.org/', type = 'source');"
           & $rscript $args
           
           # Render the rmarkdown document
@@ -75,6 +75,12 @@ jobs:
           set +e
 
           Rscript -e "require('rlang')"
+          echo $?
+
+          Rscript -e "require('htmltools')"
+          echo $?
+          
+          Rscript -e "require('rmarkdown')"
           echo $?
 
       #     quarto --version
