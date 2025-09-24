@@ -1,0 +1,58 @@
+on:
+  # push:
+  #   branches: [main, master]
+  # pull_request:
+  #   branches: [main, master]
+  workflow_dispatch:
+
+name: r-x86-problem-demo-2
+
+permissions: write-all
+
+jobs:
+  R-CMD-check:
+    runs-on: windows-11-arm
+
+    name: windows-11-arm
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v5
+      
+      - name: Show problems with rmarkdown, htmltools, rlang, cli; using pre-installed x86 R 4.4.2
+        shell: bash
+        run: |
+          set +e
+          
+          # Install Quarto
+          choco install quarto --no-progress
+          refreshenv
+
+          # Install knitr and rmarkdown
+          Rscript -e "install.packages(c('knitr', 'rmarkdown', 'htmltools', 'cli', 'rlang'), repos = 'https://cloud.r-project.org/', type = 'binary')"
+
+          Rscript -e 'require("rmarkdown")'
+          echo $?
+
+          Rscript -e 'require("htmltools")'
+          echo $?
+
+          Rscript -e 'requireNamespace("cli")'
+          echo $?
+
+          Rscript -e 'require("rlang")'
+          echo $?
+
+          Rscript -e 'require("base64enc")'
+          echo $?
+          
+          Rscript -e 'require("digest")'
+          echo $?
+
+          Rscript /c/ProgramData/Chocolatey/lib/quarto/tools/share/capabilities/knitr.R
+          echo $?
+          
+          quarto check knitr --log-level=debug
+          echo $?
