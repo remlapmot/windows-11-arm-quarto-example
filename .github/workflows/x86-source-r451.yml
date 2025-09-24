@@ -28,10 +28,10 @@ jobs:
           Remove-Item -Path "C:\rtools45\" -Recurse -Force
           Remove-Item -Path "C:\rtools44\" -Recurse -Force
           
-          # Install R aarch64 4.5.1
-          $url = "https://www.r-project.org/nosvn/winutf8/aarch64/R-4-signed/R-4.5.1-aarch64.exe"
-          Invoke-WebRequest -Uri "$url" -OutFile R-aarch64.exe -UseBasicParsing -UserAgent "NativeHost"
-          Start-Process -FilePath R-aarch64.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          # Install R x86 4.5.1
+          $url = "https://cran.r-project.org/bin/windows/base/R-4.5.1-win.exe"
+          Invoke-WebRequest -Uri "$url" -OutFile R-x86.exe -UseBasicParsing -UserAgent "NativeHost"
+          Start-Process -FilePath R-x86.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
 
           # Install Rtools45-aarch64
           $url = "https://cran.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-aarch64-6608-6492.exe"
@@ -39,7 +39,7 @@ jobs:
           Start-Process -FilePath rtools45-aarch64.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
           
           # Add R and Rtool45 binaries to PATH
-          $ENV:PATH = "C:\Program Files\R-aarch64\R-4.5.1\bin;C:\rtools45-aarch64\usr\bin"
+          $ENV:PATH = "C:\Program Files (x86)\R\R-4.5.1\bin\x64;C:\rtools45-aarch64\usr\bin;$ENV:PATH"
           
           # Install pandoc
           choco install pandoc --no-progress
@@ -75,6 +75,8 @@ jobs:
         shell: bash
         run: |
           set +e
+
+          export PATH="/c/Program Files (x86)/R/R-4.5.1/bin/x64:/c/rtools45-aarch64/usr/bin:$PATH"
 
           Rscript -e "require('rlang')"
           echo $?
