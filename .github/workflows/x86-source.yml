@@ -69,8 +69,14 @@ jobs:
           # git commit -m "Update index-rmd-r-x86.html"
           # git push
 
-      # - name: Render the Quarto document
-      #   run: |
+      - name: Render the Quarto document
+        shell: bash
+        run: |
+          set +e
+
+          Rscript -e "require('rlang')"
+          echo $?
+
       #     quarto --version
       #     quarto check knitr --log-level debug
       #     quarto render index.qmd --output index-r-x86.html
