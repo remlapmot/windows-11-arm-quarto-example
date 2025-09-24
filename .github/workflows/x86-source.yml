@@ -28,16 +28,16 @@ jobs:
           Remove-Item -Path "C:\rtools45\" -Recurse -Force
           Remove-Item -Path "C:\rtools44\" -Recurse -Force
           # Install x86_64 RTools44
-          "Start installing RTools44"
-          $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-6459-6401.exe"
+          "Start installing AARCH64 RTools44"
+          $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-aarch64-6459-6401.exe"
           "Start download"
           Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
           "Do installation"
           Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
-          "Finish RTools44"
+          "Finish AARCH64 RTools44"
           
-          # Add Rtool44 binaries to PATH
-          $ENV:PATH = "C:\rtools44\usr\bin;$ENV:PATH"
+          # Add AARCH64 Rtool44 binaries to PATH
+          $ENV:PATH = "C:\rtools44-aarch64\usr\bin;$ENV:PATH"
           
           # Install pandoc
           # choco install pandoc --no-progress
