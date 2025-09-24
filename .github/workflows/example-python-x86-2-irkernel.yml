@@ -26,6 +26,8 @@ jobs:
           echo "$PATH"
           export PATH="$PATH:/c:/Program Files (x86)/R/R-4.4.2/bin/x64"
           which Rscript
+          which py
+          which python
           # Install pandoc
           # choco install pandoc --no-progress
           echo "Here 1"
@@ -46,7 +48,7 @@ jobs:
           py -m pip install jupyterlab
           which jupyter
           echo "Rscript install IRkernel"
-          Rscript -e "install.packages(c('IRkernel'), repos = 'https://cloud.r-project.org/', type = 'binary')"
+          Rscript -e "install.packages(c('IRkernel', 'rmarkdown'), repos = 'https://cloud.r-project.org/', type = 'binary')"
           echo "Setup IRkernel"
           R -e ".libPaths()"
           jupyter kernelspec list

@@ -36,3 +36,9 @@ plot(1:10)
 ```{r}
 R.version
 ```
+
+See what happens when I load one of the packages which caused a non-zero exit code.
+
+```{r}
+library(rmarkdown)
+```
