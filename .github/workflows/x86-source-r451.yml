@@ -58,7 +58,7 @@ jobs:
           # $ENV:PATH = "C:\Users\runneradmin\AppData\Roaming\TinyTeX\bin\windows;$ENV:PATH"
           
           # Install packages
-          $args = "-e", "install.packages(c('htmltools', 'rlang', 'cli', 'rmarkdown'), repos = 'https://cloud.r-project.org/', type = 'source');"
+          $args = "-e", "install.packages(c('htmltools', 'rlang', 'cli', 'rmarkdown', 'knitr'), repos = 'https://cloud.r-project.org/', type = 'source');"
           & $rscript $args
           
           # Render the rmarkdown document
