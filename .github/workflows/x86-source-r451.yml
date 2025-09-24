@@ -58,9 +58,15 @@ jobs:
           # $ENV:PATH = "C:\Users\runneradmin\AppData\Roaming\TinyTeX\bin\windows;$ENV:PATH"
           
           # Install packages
-          $args = "-e", "install.packages(c('htmltools', 'rlang', 'cli', 'rmarkdown', 'knitr'), repos = 'https://cloud.r-project.org/', type = 'source');"
+          $args = "-e", "install.packages(c('htmltools', 'rlang'), repos = 'https://cloud.r-project.org/', type = 'source');"
+          & $rscript $args
+
+          $args = "-e", "install.packages(c('cli'), repos = 'https://cloud.r-project.org/', type = 'source');"
           & $rscript $args
           
+          $args = "-e", "install.packages(c('rmarkdown', 'knitr'), repos = 'https://cloud.r-project.org/', type = 'binary');"
+          & $rscript $args
+        
           # Render the rmarkdown document
           # $args = "-e", "rmarkdown::render('index-rmd.Rmd', output_file = 'index-rmd-r-x86.html')"
           # & $rscript $args
@@ -71,7 +77,7 @@ jobs:
           # git commit -m "Update index-rmd-r-x86.html"
           # git push
 
-      - name: Render the Quarto document
+      - name: Investigate exit codes
         shell: bash
         run: |
           set +e
