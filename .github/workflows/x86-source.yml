@@ -23,7 +23,6 @@ jobs:
       
       - name: Render Quarto doc using pre-installed x86_64 R 4.4.2
         run: |
-          $ErrorActionPreference = 'SilentlyContinue'
           Remove-Item -Path "C:\rtools45\" -Recurse -Force
           Remove-Item -Path "C:\rtools44\" -Recurse -Force
           # Install x86_64 RTools44
