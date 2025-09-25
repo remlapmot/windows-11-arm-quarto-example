@@ -31,9 +31,9 @@ jobs:
           "Do installation"
           Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
           "Copy RTools44 to new location"
-          Copy-Item -Path C:\tools44-aarch64 C:\rtools44 -Recurse
+          Copy-Item -Path C:\rtools44-aarch64 C:\rtools44 -Recurse
           "Copy incorrectly named subdirectoty"
-          Copy-Item -Path C:\tools44\aarch64-w64-mingw32.static.posix C:\tools44\x86_64-w64-mingw32.static.posix -Recurse
+          Copy-Item -Path C:\rtools44\aarch64-w64-mingw32.static.posix C:\rtools44\x86_64-w64-mingw32.static.posix -Recurse
           "Finish AARCH64 RTools44"
           
           # Add AARCH64 Rtool44 binaries to PATH
