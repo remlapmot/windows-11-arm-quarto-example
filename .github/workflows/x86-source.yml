@@ -46,18 +46,6 @@ jobs:
           $ENV:RTOOLS44_HOME="C:\rtools44"
           echo $ENV:RTOOLS44_HOME
           $Env:Path -split ";"
-          
-          $rscript = "Rscript"
-          
-          # Install packages
-          $args = "-e", "install.packages('rlang', repos = 'https://cloud.r-project.org/', type = 'source')"
-          & $rscript $args
-          
-          $args = "-e", "install.packages('htmltools', repos = 'https://cloud.r-project.org/', type = 'source');"
-          & $rscript $args
-          
-          $args = "-e", "install.packages('sass', repos = 'https://cloud.r-project.org/', type = 'source');"
-          & $rscript $args
 
       - name: Render the Quarto document
         shell: bash
@@ -65,6 +53,19 @@ jobs:
           set +e
 
           export PATH="/c/Program Files (x86)/R/R-4.4.2/bin/x64:/c/rtools44/aarch64-w64-mingw32.static.posix/bin:/c/rtools44/usr/bin"
+
+          # Install packages
+          Rscript -e "install.packages('cli', repos = 'https://cloud.r-project.org/', type = 'source')"
+          echo $?
+          
+          Rscript -e "install.packages('rlang', repos = 'https://cloud.r-project.org/', type = 'source')"
+          echo $?
+        
+          Rscript -e "install.packages('htmltools', repos = 'https://cloud.r-project.org/', type = 'source')"
+          echo $?
+          
+          Rscript -e "install.packages('sass', repos = 'https://cloud.r-project.org/', type = 'source')"
+          echo $?
 
           Rscript -e "require('rlang')"
           echo $?
