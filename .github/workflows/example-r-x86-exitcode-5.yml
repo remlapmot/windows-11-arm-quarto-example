@@ -1,0 +1,64 @@
+on:
+  # push:
+  #   branches: [main, master]
+  # pull_request:
+  #   branches: [main, master]
+  workflow_dispatch:
+
+name: r-x86-problem-demo-5
+
+permissions: write-all
+
+jobs:
+  R-CMD-check:
+    runs-on: windows-11-arm
+
+    name: windows-11-arm
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v5
+     
+      - name: Install R 4.5.1
+        run: |
+          "Here 1"
+          # Install R 4.5.1
+          $url = "https://cran.r-project.org/bin/windows/base/R-4.5.1-win.exe"
+          Invoke-WebRequest -Uri "$url" -OutFile R-x86_64.exe -UseBasicParsing -UserAgent "NativeHost"
+          Start-Process -FilePath R-x86_64.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+     
+          $ENV:PATH = "C:\Program Files (x86)\R\R-4.5.1\bin\x64;$ENV:PATH"
+      
+      - name: Show problems with rmarkdown, htmltools, rlang, cli; using pre-installed x86 R 4.5.1
+        shell: bash
+        run: |
+          set +e
+          
+          export PATH="/c/Program Files (x86)/R/R-4.5.1/bin/x64:$PATH"
+          
+          # Install Quarto
+          choco install quarto --no-progress
+          refreshenv
+
+          # Install knitr and rmarkdown
+          Rscript -e "install.packages(c('knitr', 'rmarkdown', 'htmltools', 'cli', 'rlang'), repos = 'https://packagemanager.posit.co/cran/latest', type = 'binary')"
+
+          Rscript -e 'require("rmarkdown")'
+          echo $?
+
+          Rscript -e 'require("htmltools")'
+          echo $?
+
+          Rscript -e 'requireNamespace("cli")'
+          echo $?
+
+          Rscript -e 'require("rlang")'
+          echo $?
+
+          Rscript /c/ProgramData/Chocolatey/lib/quarto/tools/share/capabilities/knitr.R
+          echo $?
+          
+          quarto check knitr --log-level=debug
+          echo $?
