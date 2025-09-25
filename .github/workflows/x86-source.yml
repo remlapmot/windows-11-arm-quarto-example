@@ -30,14 +30,20 @@ jobs:
           Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
           "Do installation"
           Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          "Copy RTools44 to new location"
+          Copy-Item -Path C:\tools44-aarch64 C:\rtools44 -Recurse
+          "Copy incorrectly named subdirectoty"
+          Copy-Item -Path C:\tools44\aarch64-w64-mingw32.static.posix C:\tools44\x86_64-w64-mingw32.static.posix -Recurse
           "Finish AARCH64 RTools44"
           
           # Add AARCH64 Rtool44 binaries to PATH
-          $ENV:PATH = "C:\Program Files (x86)\R\R-4.4.2\bin\x64;C:\rtools44-aarch64\aarch64-w64-mingw32.static.posix\bin;C:\rtools44-aarch64\usr\bin"
+          $ENV:PATH = "C:\Program Files (x86)\R\R-4.4.2\bin\x64;C:\rtools44\x86_64-w64-mingw32.static.posix\bin;C:\rtools44\usr\bin"
           
-          Get-ChildItem -Path C:\rtools44-aarch64
-          Get-ChildItem -Path C:\rtools44-aarch64\usr\bin
+          Get-ChildItem -Path C:\rtools44
+          Get-ChildItem -Path C:\rtools44\usr\bin
+          Get-ChildItem -Path C:\rtools44\x86_64-w64-mingw32.static.posix
           "Print environment variable"
+          $ENV:RTOOLS44_HOME="C:\rtools44"
           echo $ENV:RTOOLS44_HOME
           $Env:Path -split ";"
           
