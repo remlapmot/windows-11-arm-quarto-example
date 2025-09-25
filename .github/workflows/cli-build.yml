@@ -1,0 +1,47 @@
+on:
+  # push:
+  #   branches: [main, master]
+  # pull_request:
+  #   branches: [main, master]
+  workflow_dispatch:
+
+name: cli-build
+
+permissions: write-all
+
+jobs:
+  R-CMD-check:
+    runs-on: windows-11-arm
+
+    name: windows-11-arm
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v5
+      
+      - name: Clone cli repo
+        run: |
+          git clone --depth 1 --branch v3.6.5 https://github.com/r-lib/cli.git
+          cd cli
+
+          "Start installing AARCH64 RTools44"
+          $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-aarch64-6459-6401.exe"
+          "Start download"
+          Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
+          "Do installation"
+          Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          "Finish AARCH64 RTools44"
+          
+          # Add AARCH64 Rtool44 binaries to PATH
+          $ENV:PATH = "C:\rtools44-aarch64\usr\bin;$ENV:PATH"
+          
+          # Install devtools
+          $rscript = Rscript
+          $args = "-e", "install.packages('devtools', repos = 'https://cloud.r-project.org/', type = 'binary')"
+          & $rscript $args
+          
+          # Run devtools load_all()
+          $args = "-e", "devtools::load_all('./')"
+          & $rscript $args
