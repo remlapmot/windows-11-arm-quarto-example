@@ -23,9 +23,6 @@ jobs:
       
       - name: Clone cli repo
         run: |
-          git clone --depth 1 --branch v3.6.5 https://github.com/r-lib/cli.git
-          cd cli
-
           "Start installing AARCH64 RTools44"
           $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-aarch64-6459-6401.exe"
           "Start download"
@@ -33,6 +30,9 @@ jobs:
           "Do installation"
           Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
           "Finish AARCH64 RTools44"
+
+          git clone --depth 1 --branch v3.6.5 https://github.com/r-lib/cli.git
+          cd cli
           
           # Add AARCH64 Rtool44 binaries to PATH
           $ENV:PATH = "C:\rtools44-aarch64\usr\bin;$ENV:PATH"
