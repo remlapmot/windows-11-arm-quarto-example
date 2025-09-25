@@ -23,8 +23,6 @@ jobs:
       
       - name: Render Quarto doc using pre-installed x86_64 R 4.4.2
         run: |
-          Remove-Item -Path "C:\rtools45\" -Recurse -Force
-          Remove-Item -Path "C:\rtools44\" -Recurse -Force
           # Install x86_64 RTools44
           "Start installing AARCH64 RTools44"
           $url = "https://cran.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-aarch64-6459-6401.exe"
