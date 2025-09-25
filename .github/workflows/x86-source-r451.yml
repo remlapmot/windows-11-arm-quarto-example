@@ -23,9 +23,6 @@ jobs:
       
       - name: Install x86_64 R 4.5.1 and AARCH64 RTools45
         run: |
-          Remove-Item -Path "C:\rtools45\" -Recurse -Force
-          Remove-Item -Path "C:\rtools44\" -Recurse -Force
-          
           # Install R x86 4.5.1
           $url = "https://cran.r-project.org/bin/windows/base/R-4.5.1-win.exe"
           Invoke-WebRequest -Uri "$url" -OutFile R-x86.exe -UseBasicParsing -UserAgent "NativeHost"
