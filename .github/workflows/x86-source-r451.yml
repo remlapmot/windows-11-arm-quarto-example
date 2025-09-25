@@ -23,8 +23,6 @@ jobs:
       
       - name: Install x86_64 R 4.5.1 and AARCH64 RTools45
         run: |
-          $ErrorActionPreference = 'SilentlyContinue'
-          
           Remove-Item -Path "C:\rtools45\" -Recurse -Force
           Remove-Item -Path "C:\rtools44\" -Recurse -Force
           
