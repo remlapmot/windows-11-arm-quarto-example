@@ -24,7 +24,6 @@ jobs:
       - name: Render Quarto doc using pre-installed x86_64 R 4.4.2
         run: |
           $ErrorActionPreference = 'SilentlyContinue'
-          $Env:Path -split ";"
           Remove-Item -Path "C:\rtools45\" -Recurse -Force
           Remove-Item -Path "C:\rtools44\" -Recurse -Force
           # Install x86_64 RTools44
@@ -56,6 +55,8 @@ jobs:
         run: |
           set +e
 
+          export PATH="/c/rtools44/usr/bin:$PATH"
+
           Rscript -e "require('rlang')"
           echo $?
 
@@ -64,14 +65,3 @@ jobs:
           
           Rscript -e "require('sass')"
           echo $?
-
-      #     quarto --version
-      #     quarto check knitr --log-level debug
-      #     quarto render index.qmd --output index-r-x86.html
-
-      #     # Commit and push
-      #     git config user.name "Tom Palmer"
-      #     git config user.email "remlapmot@hotmail.com"
-      #     git add index-r-x86.html
-      #     git commit -m "Update index-r-x86.html"
-      #     git push
