@@ -39,7 +39,7 @@ jobs:
           cd cli
 
           # Install devtools
-          $rscript = Rscript
+          $rscript = "Rscript"
           $args = "-e", "install.packages('devtools', repos = 'https://cloud.r-project.org/', type = 'binary')"
           & $rscript $args
           
