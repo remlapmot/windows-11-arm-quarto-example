@@ -52,6 +52,15 @@ jobs:
           
           $args = "-e", "install.packages('sass', repos = 'https://cloud.r-project.org/', type = 'source');"
           & $rscript $args
+          
+          $args = "-e", "install.packages('cli', repos = 'https://cloud.r-project.org/', type = 'source');"
+          & $rscript $args
+          
+          $args = "-e", "install.packages('rmarkdown', repos = 'https://cloud.r-project.org/', type = 'source');"
+          & $rscript $args
+          
+          $args = "-e", "install.packages('knitr', repos = 'https://cloud.r-project.org/', type = 'source');"
+          & $rscript $args
         
       - name: Investigate exit codes
         shell: bash
@@ -67,4 +76,13 @@ jobs:
           echo $?
           
           Rscript -e "require('sass')"
+          echo $?
+
+          Rscript -e "require('cli')"
+          echo $?
+
+          Rscript -e "require('rmarkdown')"
+          echo $?
+
+          Rscript -e "require('knitr')"
           echo $?
