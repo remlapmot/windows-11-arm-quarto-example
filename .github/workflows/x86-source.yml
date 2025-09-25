@@ -40,6 +40,8 @@ jobs:
           
           Get-ChildItem -Path C:\rtools44
           Get-ChildItem -Path C:\rtools44\usr\bin
+          "Print environment variable"
+          echo $ENV:RTOOLS44_HOME
           
           $rscript = "Rscript"
           
