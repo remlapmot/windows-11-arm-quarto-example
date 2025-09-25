@@ -33,41 +33,23 @@ jobs:
           "Start download"
           Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
           "Do installation"
-          Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES /DIR='C:\rtools44'" -NoNewWindow -Wait
           "Finish AARCH64 RTools44"
           
           # Add AARCH64 Rtool44 binaries to PATH
-          $ENV:PATH = "C:\rtools44-aarch64\usr\bin;$ENV:PATH"
+          $ENV:PATH = "C:\rtools44\usr\bin;$ENV:PATH"
           
-          # Install pandoc
-          # choco install pandoc --no-progress
-          # refreshenv
-
-          # Install Quarto
-          # choco install quarto --no-progress
-          # refreshenv
-
-          # Install TinyTeX
           $rscript = "Rscript"
-          # $args = "-e", "install.packages(c('tinytex'), repos = 'https://cloud.r-project.org/'); tinytex::install_tinytex(); tinytex::tlmgr_install(c('makeindex', 'upquote', 'inconsolata'))"
-          # & $rscript $args
-
-          # Add TinyTeX binaries to PATH
-          # $ENV:PATH = "C:\Users\runneradmin\AppData\Roaming\TinyTeX\bin\windows;$ENV:PATH"
           
           # Install packages
-          $args = "-e", "install.packages(c('htmltools', 'rlang', 'rmarkdown'), repos = 'https://cloud.r-project.org/', type = 'source');"
+          $args = "-e", "install.packages('rlang', repos = 'https://cloud.r-project.org/', type = 'source')"
           & $rscript $args
           
-          # Render the rmarkdown document
-          # $args = "-e", "rmarkdown::render('index-rmd.Rmd', output_file = 'index-rmd-r-x86.html')"
-          # & $rscript $args
-
-          # git config user.name "Tom Palmer"
-          # git config user.email "remlapmot@hotmail.com"
-          # git add index-rmd-r-x86.html
-          # git commit -m "Update index-rmd-r-x86.html"
-          # git push
+          $args = "-e", "install.packages('htmltools', repos = 'https://cloud.r-project.org/', type = 'source');"
+          & $rscript $args
+          
+          $args = "-e", "install.packages('sass', repos = 'https://cloud.r-project.org/', type = 'source');"
+          & $rscript $args
 
       - name: Render the Quarto document
         shell: bash
@@ -80,7 +62,7 @@ jobs:
           Rscript -e "require('htmltools')"
           echo $?
           
-          Rscript -e "require('rmarkdown')"
+          Rscript -e "require('sass')"
           echo $?
 
       #     quarto --version
