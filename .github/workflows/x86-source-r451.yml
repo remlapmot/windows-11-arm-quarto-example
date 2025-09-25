@@ -50,7 +50,7 @@ jobs:
           $args = "-e", "install.packages('htmltools', repos = 'https://cloud.r-project.org/', type = 'source')"
           & $rscript $args
           
-          $args = "-e", "install.packages('sass', repos = 'https://cloud.r-project.org/', type = 'binary');"
+          $args = "-e", "install.packages('sass', repos = 'https://cloud.r-project.org/', type = 'source');"
           & $rscript $args
         
       - name: Investigate exit codes
