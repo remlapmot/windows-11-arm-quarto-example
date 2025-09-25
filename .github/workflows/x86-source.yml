@@ -33,7 +33,7 @@ jobs:
           "Finish AARCH64 RTools44"
           
           # Add AARCH64 Rtool44 binaries to PATH
-          $ENV:PATH = "C:\Program Files (x86)\R\R-4.4.2\bin\x64;C:\rtools44-aarch64\x86_64-w64-mingw32.static.posix\bin;C:\rtools44-aarch64\usr\bin"
+          $ENV:PATH = "C:\Program Files (x86)\R\R-4.4.2\bin\x64;C:\rtools44-aarch64\aarch64-w64-mingw32.static.posix\bin;C:\rtools44-aarch64\usr\bin"
           
           Get-ChildItem -Path C:\rtools44-aarch64
           Get-ChildItem -Path C:\rtools44-aarch64\usr\bin
@@ -58,7 +58,7 @@ jobs:
         run: |
           set +e
 
-          export PATH="/c/Program Files (x86)/R/R-4.4.2/bin/x64:/c/rtools44/x86_64-w64-mingw32.static.posix/bin:/c/rtools44/usr/bin"
+          export PATH="/c/Program Files (x86)/R/R-4.4.2/bin/x64:/c/rtools44/aarch64-w64-mingw32.static.posix/bin:/c/rtools44/usr/bin"
 
           Rscript -e "require('rlang')"
           echo $?
