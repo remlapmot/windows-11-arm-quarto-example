@@ -29,9 +29,9 @@ jobs:
           Start-Process -FilePath R-x86.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
 
           # Install Rtools45-aarch64
-          $url = "https://cran.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-6608-6492.exe"
+          $url = "https://cran.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-aarch64-6608-6492.exe"
           Invoke-WebRequest -Uri "$url" -OutFile rtools45.exe -UseBasicParsing -UserAgent "NativeHost"
-          Start-Process -FilePath rtools45.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          Start-Process -FilePath rtools45.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES /DIR='C:\rtools45'" -NoNewWindow -Wait
           
           # Add R and Rtool45 binaries to PATH
           $ENV:PATH = "C:\Program Files (x86)\R\R-4.5.1\bin\x64;C:\rtools45\x86_64-w64-mingw32.static.posix\bin;C:\rtools45\usr\bin"
@@ -40,7 +40,6 @@ jobs:
           Get-ChildItem -Path C:\rtools45\usr\bin
           "Print environment variable"
           echo $ENV:RTOOLS45_HOME
-
 
       - name: Investigate exit codes
         shell: bash
