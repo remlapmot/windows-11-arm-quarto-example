@@ -33,12 +33,12 @@ jobs:
           # Install Rtools45 AARCH64
           $url = "https://cran.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-aarch64-6608-6492.exe"
           Invoke-WebRequest -Uri "$url" -OutFile rtools45.exe -UseBasicParsing -UserAgent "NativeHost"
-          Start-Process -FilePath rtools45.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          Start-Process -FilePath rtools45.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES /DIR='C:\rtools45'" -NoNewWindow -Wait
           "RTools45 installed"
           
           "Here 3"
           # Add R and Rtool45 binaries to PATH
-          $ENV:PATH = "C:\Program Files (x86)\R\R-4.5.1\bin\x64;C:\rtools45-aarch64\usr\bin;$ENV:PATH"
+          $ENV:PATH = "C:\Program Files (x86)\R\R-4.5.1\bin\x64;C:\rtools45\usr\bin;$ENV:PATH"
 
           git clone --depth 1 --branch v3.6.5 https://github.com/r-lib/cli.git
           cd cli
