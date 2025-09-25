@@ -28,11 +28,11 @@ jobs:
           "Start download"
           Invoke-WebRequest -Uri "$url" -OutFile rtools44.exe -UseBasicParsing -UserAgent "NativeHost"
           "Do installation"
-          Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
+          Start-Process -FilePath rtools44.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES /DIR='C:\rtools44'" -NoNewWindow -Wait
           "Finish installation"
           # Add AARCH64 Rtool44 binaries to PATH
           "Add binaries to PATH"
-          $ENV:PATH = "C:\rtools44-aarch64\usr\bin;$ENV:PATH"
+          $ENV:PATH = "C:\rtools44\usr\bin;$ENV:PATH"
           "Finish AARCH64 RTools44"
 
           git clone --depth 1 --branch v3.6.5 https://github.com/r-lib/cli.git
