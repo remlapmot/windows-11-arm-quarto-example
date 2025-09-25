@@ -39,7 +39,7 @@ jobs:
           Start-Process -FilePath rtools45-aarch64.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES /DIR='C:\rtools45'" -NoNewWindow -Wait
           
           # Add R and Rtool45 binaries to PATH
-          $ENV:PATH = "C:\Program Files (x86)\R\R-4.5.1\bin\x64;C:\rtools45\x86_64-w64-mingw32.static.posix\bin;$ENV:PATH"
+          $ENV:PATH = "C:\Program Files (x86)\R\R-4.5.1\bin\x64;C:\rtools45\x86_64-w64-mingw32.static.posix\bin"
           
           $rscript = "Rscript"
           
@@ -58,7 +58,7 @@ jobs:
         run: |
           set +e
 
-          export PATH="/c/Program Files (x86)/R/R-4.5.1/bin/x64:/c/rtools45/x86_64-w64-mingw32.static.posix/bin:$PATH"
+          export PATH="/c/Program Files (x86)/R/R-4.5.1/bin/x64:/c/rtools45/x86_64-w64-mingw32.static.posix/bin"
 
           Rscript -e "require('rlang')"
           echo $?
