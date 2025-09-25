@@ -38,6 +38,9 @@ jobs:
           # Add AARCH64 Rtool44 binaries to PATH
           $ENV:PATH = "C:\Program Files (x86)\R\R-4.4.2\bin\x64;C:\rtools44\x86_64-w64-mingw32.static.posix\bin;C:\rtools44\usr\bin"
           
+          Get-ChildItem -Path C:\rtools44
+          Get-ChildItem -Path C:\rtools44\usr\bin
+          
           $rscript = "Rscript"
           
           # Install packages
