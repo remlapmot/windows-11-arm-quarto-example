@@ -25,5 +25,4 @@ jobs:
         shell: bash
         run: |
           choco install quarto --no-progress
-          refreshenv
           file "$(which quarto)"
