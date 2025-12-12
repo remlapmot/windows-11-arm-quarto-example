@@ -21,22 +21,22 @@ jobs:
     steps:
       - uses: actions/checkout@v6
      
-      - name: Install R 4.5.1
+      - name: Install R 4.5.2
         run: |
           "Here 1"
-          # Install R 4.5.1
-          $url = "https://cran.r-project.org/bin/windows/base/R-4.5.1-win.exe"
+          # Install R 4.5.2
+          $url = "https://cran.r-project.org/bin/windows/base/R-4.5.2-win.exe"
           Invoke-WebRequest -Uri "$url" -OutFile R-x86_64.exe -UseBasicParsing -UserAgent "NativeHost"
           Start-Process -FilePath R-x86_64.exe -ArgumentList "/install /norestart /verysilent /SUPPRESSMSGBOXES" -NoNewWindow -Wait
      
-          $ENV:PATH = "C:\Program Files (x86)\R\R-4.5.1\bin\x64;$ENV:PATH"
+          $ENV:PATH = "C:\Program Files (x86)\R\R-4.5.2\bin\x64;$ENV:PATH"
       
-      - name: Show problems with rmarkdown, htmltools, rlang, cli; using pre-installed x86 R 4.5.1
+      - name: Show problems with rmarkdown, htmltools, rlang, cli; using pre-installed x86 R 4.5.2
         shell: bash
         run: |
           set +e
           
-          export PATH="/c/Program Files (x86)/R/R-4.5.1/bin/x64:$PATH"
+          export PATH="/c/Program Files (x86)/R/R-4.5.2/bin/x64:$PATH"
           
           # Install Quarto
           choco install quarto --no-progress
