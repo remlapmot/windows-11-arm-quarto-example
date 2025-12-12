@@ -41,6 +41,7 @@ jobs:
           # Install Quarto
           choco install quarto --no-progress
           refreshenv
+          quarto --version
 
           # Install knitr and rmarkdown
           Rscript -e "install.packages(c('knitr', 'rmarkdown', 'htmltools', 'cli', 'rlang'), repos = 'https://packagemanager.posit.co/cran/latest', type = 'binary')"
